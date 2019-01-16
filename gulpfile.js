@@ -6,25 +6,24 @@ var gulp = require('gulp'),
   uglify = require('gulp-uglify'),
   cleanCSS = require('gulp-clean-css'),
   rename = require("gulp-rename"),
-  merge = require('merge-stream'),
   htmlreplace = require('gulp-html-replace'),
   autoprefixer = require('gulp-autoprefixer'),
-  browserSync = require('browser-sync').create();
+  browserSync = require('browser-sync').create(),
+  ts = require('gulp-typescript');
+
+// Compile typescript task
+gulp.task('typescript', function () {
+  return gulp.src('assets/js/*.ts')
+    .pipe(ts({
+        noImplicitAny: true,
+    }))
+    .pipe(gulp.dest('assets/js/'));
+});
+
 
 // Clean task
 gulp.task('clean', function() {
   return del(['dist', 'assets/css/app.css']);
-});
-
-// Copy third party libraries from node_modules into /vendor
-gulp.task('vendor:js', function() {
-  return gulp.src([
-    './node_modules/bootstrap/dist/js/*',
-    './node_modules/jquery/dist/*',
-    '!./node_modules/jquery/dist/core.js',
-    './node_modules/popper.js/dist/umd/popper.*'
-  ])
-    .pipe(gulp.dest('./assets/js/vendor'));
 });
 
 // Copy font-awesome from node_modules into /fonts
@@ -40,19 +39,7 @@ gulp.task('vendor:fonts', function() {
 });
 
 // vendor task
-gulp.task('vendor', gulp.parallel('vendor:fonts', 'vendor:js'));
-
-// Copy vendor's js to /dist
-gulp.task('vendor:build', function() {
-  var jsStream = gulp.src([
-    './assets/js/vendor/bootstrap.bundle.min.js',
-    './assets/js/vendor/jquery.slim.min.js',
-    './assets/js/vendor/popper.min.js'
-  ])
-    .pipe(gulp.dest('./dist/assets/js/vendor'));
-  var fontStream = gulp.src(['./assets/fonts/font-awesome/**/*.*']).pipe(gulp.dest('./dist/assets/fonts/font-awesome'));
-  return merge (jsStream, fontStream);
-})
+gulp.task('vendor', gulp.parallel('vendor:fonts'));
 
 // Copy Bootstrap SCSS(SASS) from node_modules to /assets/scss/bootstrap
 gulp.task('bootstrap:scss', function() {
@@ -84,7 +71,7 @@ gulp.task('css:minify', gulp.series('scss', function cssMinify() {
 // Minify Js
 gulp.task('js:minify', function () {
   return gulp.src([
-    './assets/js/app.js'
+    './assets/js/**/*.js'
   ])
     .pipe(uglify())
     .pipe(rename({
@@ -115,7 +102,11 @@ gulp.task('dev', function browserDev(done) {
     browserSync.reload();
     done(); //Async callback for completion.
   }));
-  gulp.watch('assets/js/app.js', gulp.series('js:minify', function jsBrowserReload (done) {
+  gulp.watch('assets/js/*.js', gulp.series('js:minify', function jsBrowserReload (done) {
+    browserSync.reload();
+    done();
+  }));
+  gulp.watch('assets/js/*.ts', gulp.series('typescript', 'js:minify', function jsBrowserReload (done) {
     browserSync.reload();
     done();
   }));
@@ -124,7 +115,7 @@ gulp.task('dev', function browserDev(done) {
 });
 
 // Build task
-gulp.task("build", gulp.series(gulp.parallel('css:minify', 'js:minify', 'vendor'), 'vendor:build', function copyAssets() {
+gulp.task("build", gulp.series(gulp.parallel('css:minify', 'js:minify', 'vendor'), function copyAssets() {
   return gulp.src([
     '*.html',
     'favicon.ico',
