@@ -1,4 +1,4 @@
-#Typescript boilerplate
+# Typescript boilerplate
 Includes:
  - Bootstrap 4
  - Font-awesome icons
