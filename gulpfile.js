@@ -115,7 +115,7 @@ gulp.task('dev', function browserDev(done) {
 });
 
 // Build task
-gulp.task("build", gulp.series(gulp.parallel('css:minify', 'js:minify', 'vendor'), function copyAssets() {
+gulp.task("build", gulp.series(gulp.parallel('css:minify', 'typescript', 'js:minify', 'vendor'), function copyAssets() {
   return gulp.src([
     '*.html',
     'favicon.ico',
