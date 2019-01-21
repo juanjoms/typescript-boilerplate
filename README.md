@@ -9,7 +9,7 @@ Includes:
 *Forked from [bootstrap-4-sass-gulp-4-boilerplate](https://github.com/JayeshLab/bootstrap-4-sass-gulp-4-boilerplate)*
 
 ## Pre-requisites
-- [Node.js](https://nodejs.org/en/download/ "Node Js")
+- [Node.js](https://nodejs.org/en/download/ "Node.js")
 - [Gulp](https://gulpjs.com/ "Gulp")
 
 ## Getting started
@@ -39,7 +39,7 @@ Includes:
     gulp dev
     ```
 
-  - To compile scss to css, typescript to javascript, minify css and js and build ready for production files in **dist** folder:
+  - To complile scss and typescript files, minify css and js and build ready for production files in **dist** folder:
 
     ```
     gulp

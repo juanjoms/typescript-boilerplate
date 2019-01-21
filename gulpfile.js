@@ -13,11 +13,11 @@ var gulp = require('gulp'),
 
 // Compile typescript task
 gulp.task('typescript', function () {
-  return gulp.src('assets/js/*.ts')
+  return gulp.src('app/**/*.ts')
     .pipe(ts({
         noImplicitAny: true,
     }))
-    .pipe(gulp.dest('assets/js/'));
+    .pipe(gulp.dest('app/'));
 });
 
 
@@ -71,13 +71,13 @@ gulp.task('css:minify', gulp.series('scss', function cssMinify() {
 // Minify Js
 gulp.task('js:minify', function () {
   return gulp.src([
-    './assets/js/**/*.js'
+    './app/**/*.js'
   ])
     .pipe(uglify())
     .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('./dist/assets/js'))
+    .pipe(gulp.dest('./dist/app'))
     .pipe(browserSync.stream());
 });
 
@@ -85,34 +85,40 @@ gulp.task('js:minify', function () {
 gulp.task('replaceHtmlBlock', function () {
   return gulp.src(['*.html'])
     .pipe(htmlreplace({
-      'js': 'assets/js/app.min.js',
+      'js': 'app/main.min.js',
       'css': 'assets/css/app.min.css'
     }))
     .pipe(gulp.dest('dist/'));
 });
 
 // Configure the browserSync task and watch file path for change
-gulp.task('dev', function browserDev(done) {
+gulp.task('watch', function browserDev(done) {
   browserSync.init({
     server: {
       baseDir: "./"
     }
   });
+
   gulp.watch(['assets/scss/*.scss','assets/scss/**/*.scss','!assets/scss/bootstrap/**'], gulp.series('css:minify', function cssBrowserReload (done) {
     browserSync.reload();
     done(); //Async callback for completion.
   }));
-  gulp.watch('assets/js/*.js', gulp.series('js:minify', function jsBrowserReload (done) {
+
+  // Reload the browser on Javascript changes
+  gulp.watch('app/**/*.js', function jsBrowserReload (done) {
     browserSync.reload();
     done();
-  }));
-  gulp.watch('assets/js/*.ts', gulp.series('typescript', 'js:minify', function jsBrowserReload (done) {
-    browserSync.reload();
-    done();
-  }));
+  });
+
+  // Watch typescript changes and complile to JS, the wanch in JS files will reload the browser
+  gulp.watch('app/**/*.ts', gulp.series('typescript'));
+
   gulp.watch(['*.html']).on('change', browserSync.reload);
   done();
 });
+
+// Dev task
+gulp.task("dev", gulp.series('typescript', 'watch'));
 
 // Build task
 gulp.task("build", gulp.series(gulp.parallel('css:minify', 'typescript', 'js:minify', 'vendor'), function copyAssets() {
