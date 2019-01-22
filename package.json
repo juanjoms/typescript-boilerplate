@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/juanjo_23/typescript-boilerplate.git"
+    "url": "git+https://github.com/juanjoms/typescript-boilerplate.git"
   },
   "keywords": [
     "typescript",
@@ -20,9 +20,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/juanjo_23/typescript-boilerplate/issues"
+    "url": "https://github.com/juanjoms/typescript-boilerplate/issues"
   },
-  "homepage": "https://github.com/juanjo_23/typescript-boilerplate#readme",
+  "homepage": "https://github.com/juanjoms/typescript-boilerplate#readme",
   "dependencies": {
     "bootstrap": "^4.1.3",
     "font-awesome": "4.7.0",
