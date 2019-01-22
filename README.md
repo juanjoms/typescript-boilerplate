@@ -11,7 +11,7 @@ Includes: Bootstrap 4, Font-awesome icons, Sass, Gulp 4, browserSync (with hot-r
 
 1. Clone repository:
 
-    ##### ```git clone https://github.com/juanjoms/typescript-boilerplate```
+    ##### `git clone https://github.com/juanjoms/typescript-boilerplate`
 
 2. Change directory:
 
