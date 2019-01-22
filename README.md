@@ -11,15 +11,15 @@ Includes: Bootstrap 4, Font-awesome icons, Sass, Gulp 4, browserSync (with hot-r
 
 1. Clone repository:
 
-  ##### `git clone https://github.com/juanjoms/typescript-boilerplate`
+    ##### `git clone https://github.com/juanjoms/typescript-boilerplate`
 
 2. Change directory:
 
-  ##### `cd typescript-boilerplate`
+    ##### `cd typescript-boilerplate`
 
 3. Install all dependencies and libraries:
 
-  ##### `npm install`
+    ##### `npm install`
 
 4. Run a gulp task:
 
