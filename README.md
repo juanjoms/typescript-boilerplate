@@ -1,10 +1,5 @@
 # Typescript boilerplate
-Includes:
- - Bootstrap 4
- - Font-awesome icons
- - Sass
- - Gulp 4
- - broserSync (with hot-reloading).
+Includes: Bootstrap 4, Font-awesome icons, Sass, Gulp 4, browserSync (with hot-reloading).
 
 *Forked from [bootstrap-4-sass-gulp-4-boilerplate](https://github.com/JayeshLab/bootstrap-4-sass-gulp-4-boilerplate)*
 
@@ -16,32 +11,23 @@ Includes:
 
 1. Clone repository:
 
-  ```
-  git clone https://github.com/juanjo23/typescript-boilerplate
-  ```
+  ##### `git clone https://github.com/juanjoms/typescript-boilerplate`
 
 2. Change directory:
 
-  ```
-  cd typescript-boilerplate
-  ```
+  ##### `cd typescript-boilerplate`
 
 3. Install all dependencies and libraries:
 
-  ```
-  npm install
-  ```
+  ##### `npm install`
 
-4. Run Gulp Task:
-  - Starts a local server with browserSync and hot reloading on changes to files (HTML, SCSS, TS, JS):
+4. Run a gulp task:
 
-    ```
-    gulp dev
-    ```
+- Start a local server with browserSync and hot reloading on changes to HTML, SCSS, TS and JS files:
+  ##### `gulp dev`
 
-  - To complile scss and typescript files, minify css and js and build ready for production files in **dist** folder:
+- Build ready for production files in *dist* folder:
+  ##### `gulp`
 
-    ```
-    gulp
-    ```
+
 
