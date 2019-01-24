@@ -10371,7 +10371,7 @@ a.text-dark:hover, a.text-dark:focus {
 
 .main .jumbotron {
   background: white;
-  padding: 5rem 0;
+  padding: 1rem 0;
 }
 
 .main .jumbotron .container {
@@ -10380,4 +10380,8 @@ a.text-dark:hover, a.text-dark:focus {
 
 .main .jumbotron .container .jumbotron-heading {
   font-weight: 300;
+}
+
+.main .container {
+  max-width: 40rem;
 }

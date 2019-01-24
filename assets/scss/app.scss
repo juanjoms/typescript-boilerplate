@@ -8,13 +8,16 @@
   height: 100%;
   .jumbotron {
     background: white;
-    padding: 5rem 0;
+    padding: 1rem 0;
     .container {
       max-width: 40rem;
       .jumbotron-heading {
         font-weight: 300;
       }
     }
+  }
+  .container {
+    max-width: 40rem;
   }
 }
 
