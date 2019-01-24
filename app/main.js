@@ -3,7 +3,7 @@ var Greeter = /** @class */ (function () {
         this.greeting = message;
     }
     Greeter.prototype.greet = function () {
-        return "Hello, asd " + this.greeting;
+        return "Hello, " + this.greeting;
     };
     return Greeter;
 }());
@@ -12,7 +12,7 @@ var jsFrameworks = [
     {
         name: 'Angular',
         description: 'Officia excepteur do dolor id ullamco magna qui ullamco.',
-        url: 'angular.io'
+        url: 'https://angular.io'
     },
     {
         name: 'Vue.js',
@@ -31,7 +31,7 @@ var jsFrameworks = [
     }
 ];
 var list = document.getElementById('list-tab');
-jsFrameworks.forEach(function (framework) {
+var showFrameworks = function (framework) {
     var link = document.createElement('a');
     link.className = 'list-group-item list-group-item-action';
     link.href = 'javascript:void(0)';
@@ -45,4 +45,30 @@ jsFrameworks.forEach(function (framework) {
         frameworkSite.textContent = "Go to " + framework.name + " site";
     };
     list.appendChild(link);
+};
+jsFrameworks.forEach(function (framework) {
+    showFrameworks(framework);
 });
+var addNewElement = document.getElementById('add');
+addNewElement.onclick = function () {
+    var nFramework = document.getElementById('newFramework');
+    var nDesc = document.getElementById('newDescription');
+    var nURL = document.getElementById('newURL');
+    if (nFramework.value.length > 0 && nDesc.value.length > 0 && nURL.value.length > 0) {
+        var enviar = {
+            name: nFramework.value,
+            description: nDesc.value,
+            url: nURL.value
+        };
+        jsFrameworks.push(enviar);
+        showFrameworks(enviar);
+        nFramework.value = "";
+        nDesc.value = "";
+        nURL.value = "";
+    }
+    else {
+        alert('Todos los campos deben ser llenados');
+    }
+    /*
+      console.log(jsFrameworks);*/
+};

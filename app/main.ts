@@ -4,7 +4,7 @@ class Greeter {
     this.greeting = message;
   }
   greet() {
-    return "Hello, asd " + this.greeting;
+    return "Hello, " + this.greeting;
   }
 }
 
@@ -41,7 +41,7 @@ let jsFrameworks: Framework[] = [
 
 const list: HTMLElement = document.getElementById('list-tab');
 
-jsFrameworks.forEach((framework) => {
+const showFrameworks = (framework) => {
   const link: HTMLAnchorElement = document.createElement('a');
   link.className = 'list-group-item list-group-item-action';
   link.href = 'javascript:void(0)';
@@ -55,7 +55,38 @@ jsFrameworks.forEach((framework) => {
     frameworkSite.textContent = `Go to ${framework.name} site`;
   }
   list.appendChild(link);
+}
+
+
+jsFrameworks.forEach((framework) => {
+  showFrameworks(framework);
 });
 
 
 
+
+const addNewElement: HTMLElement = document.getElementById('add');
+addNewElement.onclick = () =>{
+
+  const nFramework = document.getElementById('newFramework') as HTMLInputElement;
+  const nDesc = document.getElementById('newDescription') as HTMLInputElement;
+  const nURL = document.getElementById('newURL') as HTMLInputElement;
+  
+  if(nFramework.value.length > 0 && nDesc.value.length > 0 && nURL.value.length > 0){
+  const enviar = {
+    name: nFramework.value,
+    description: nDesc.value,
+    url: nURL.value
+  }
+    jsFrameworks.push(enviar);
+    showFrameworks(enviar);
+
+    nFramework.value = "";
+    nDesc.value = "";
+    nURL.value = "";
+  } else {
+    alert('Todos los campos deben ser llenados');
+  }
+/*
+  console.log(jsFrameworks);*/
+}
