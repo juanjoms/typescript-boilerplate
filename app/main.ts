@@ -16,7 +16,7 @@ type Framework = {
   url: string
 }
 
-let jsFrameworks: Framework[] = [
+let jsFrameworks: Framework[] = [ //tomar este array
   {
     name: 'Angular',
     description: 'Officia excepteur do dolor id ullamco magna qui ullamco.',
@@ -39,9 +39,7 @@ let jsFrameworks: Framework[] = [
   }
 ];
 
-const list: HTMLElement = document.getElementById('list-tab');
-
-jsFrameworks.forEach((framework) => {
+const agregar = (framework:Framework) =>{
   const link: HTMLAnchorElement = document.createElement('a');
   link.className = 'list-group-item list-group-item-action';
   link.href = 'javascript:void(0)';
@@ -49,13 +47,52 @@ jsFrameworks.forEach((framework) => {
   link.onclick = () => {
     document.querySelector('.card-title').textContent = framework.name;
     document.querySelector('.card-text').textContent = framework.description;
-    const frameworkSite: HTMLAnchorElement = document.querySelector('.card .btn.btn-primary');
+    const frameworkSite: HTMLAnchorElement = document.querySelector('.card .btn btn-primary');//boton
     frameworkSite.target = '_blank';
     frameworkSite.href = framework.url;
     frameworkSite.textContent = `Go to ${framework.name} site`;
   }
   list.appendChild(link);
+  
+};
+
+const list: HTMLElement = document.getElementById('list-tab');
+
+jsFrameworks.forEach((framework) => {
+  agregar(framework);
 });
 
+/* const Pdatos = (framework:Framework) => {
+
+document.querySelector('formTecnologia').textContent = framework.name;
+const frameworkSite: HTMLAnchorElement = document.querySelector('.formTecnologia.card .btn btn-agregar');
+
+} */
+
+const  add:HTMLInputElement = document.getElementById('btnAdd') as HTMLInputElement;
+add.onclick = () => {
+
+  const inputTecnologia: HTMLInputElement = document.getElementById('inlineFormInputTecnologia') as HTMLInputElement;
+  const inputDescripcion: HTMLInputElement = document.getElementById('inlineFormInputDescripcion') as HTMLInputElement;
+  //inputDescripcion.value;
+  const inputUrl: HTMLInputElement = document.getElementById('inlineFormInputurl') as HTMLInputElement;
+
+if (inputTecnologia.value.length > 0 && inputDescripcion.value.length > 0 && inputUrl.value.length  > 0){
+
+  const send = {
+    name: inputTecnologia.value,
+    description:inputDescripcion.value ,
+    url: inputUrl.value
+  }
+
+ 
+ jsFrameworks.push(send);
+ agregar(send);
+  inputTecnologia.value = "";
+  inputDescripcion.value  = "";
+  inputUrl.value = "";
+}
+
+}
 
 

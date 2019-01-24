@@ -12,7 +12,7 @@ var jsFrameworks = [
     {
         name: 'Angular',
         description: 'Officia excepteur do dolor id ullamco magna qui ullamco.',
-        url: 'angular.io'
+        url: 'https://angular.io'
     },
     {
         name: 'Vue.js',
@@ -30,8 +30,7 @@ var jsFrameworks = [
         url: 'angular.io'
     }
 ];
-var list = document.getElementById('list-tab');
-jsFrameworks.forEach(function (framework) {
+var agregar = function (framework) {
     var link = document.createElement('a');
     link.className = 'list-group-item list-group-item-action';
     link.href = 'javascript:void(0)';
@@ -39,10 +38,39 @@ jsFrameworks.forEach(function (framework) {
     link.onclick = function () {
         document.querySelector('.card-title').textContent = framework.name;
         document.querySelector('.card-text').textContent = framework.description;
-        var frameworkSite = document.querySelector('.card .btn.btn-primary');
+        var frameworkSite = document.querySelector('.card .btn btn-primary'); //boton
         frameworkSite.target = '_blank';
         frameworkSite.href = framework.url;
         frameworkSite.textContent = "Go to " + framework.name + " site";
     };
     list.appendChild(link);
+};
+var list = document.getElementById('list-tab');
+jsFrameworks.forEach(function (framework) {
+    agregar(framework);
 });
+/* const Pdatos = (framework:Framework) => {
+
+document.querySelector('formTecnologia').textContent = framework.name;
+const frameworkSite: HTMLAnchorElement = document.querySelector('.formTecnologia.card .btn btn-agregar');
+
+} */
+var add = document.getElementById('btnAdd');
+add.onclick = function () {
+    var inputTecnologia = document.getElementById('inlineFormInputTecnologia');
+    var inputDescripcion = document.getElementById('inlineFormInputDescripcion');
+    //inputDescripcion.value;
+    var inputUrl = document.getElementById('inlineFormInputurl');
+    if (inputTecnologia.value.length > 0 && inputDescripcion.value.length > 0 && inputUrl.value.length > 0) {
+        var send = {
+            name: inputTecnologia.value,
+            description: inputDescripcion.value,
+            url: inputUrl.value
+        };
+        jsFrameworks.push(send);
+        agregar(send);
+        inputTecnologia.value = "";
+        inputDescripcion.value = "";
+        inputUrl.value = "";
+    }
+};
