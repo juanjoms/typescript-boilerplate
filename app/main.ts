@@ -39,9 +39,7 @@ let jsFrameworks: Framework[] = [
   }
 ];
 
-const list: HTMLElement = document.getElementById('list-tab');
-
-jsFrameworks.forEach((framework) => {
+const btnsFunction = (framework: Framework) => {
   const link: HTMLAnchorElement = document.createElement('a');
   link.className = 'list-group-item list-group-item-action';
   link.href = 'javascript:void(0)';
@@ -55,7 +53,38 @@ jsFrameworks.forEach((framework) => {
     frameworkSite.textContent = `Go to ${framework.name} site`;
   }
   list.appendChild(link);
+}
+
+const list: HTMLElement = document.getElementById('list-tab');
+
+jsFrameworks.forEach((framework) => {
+  btnsFunction(framework);
 });
+
+const newBtn: HTMLInputElement = document.querySelector(".js-add");
+
+
+newBtn.onclick = () => {
+  let fwName: HTMLInputElement = document.querySelector(".js-new_fw");
+  let descName: HTMLInputElement = document.querySelector(".js-new_desc");
+  let fwURL: HTMLInputElement = document.querySelector(".js-new_url");
+  
+  if(fwName.value.length>0 && descName.value.length>0 && fwURL.value.length>0){
+    let newFW = {
+      name: fwName.value,
+      description: descName.value,
+      url: fwURL.value
+    };
+
+    jsFrameworks.push(newFW);
+    console.log(jsFrameworks); // new object added to array
+    
+    btnsFunction(newFW);
+  } else {
+    alert("Please don't leave empty fields.");
+  }
+
+}
 
 
 
