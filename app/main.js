@@ -12,7 +12,7 @@ var jsFrameworks = [
     {
         name: 'Angular',
         description: 'Officia excepteur do dolor id ullamco magna qui ullamco.',
-        url: 'angular.io'
+        url: 'https://angular.io'
     },
     {
         name: 'Vue.js',
@@ -31,9 +31,55 @@ var jsFrameworks = [
     }
 ];
 var list = document.getElementById('list-tab');
+var elements = document.querySelectorAll('.searche');
+var texto = document.querySelector('.prueba');
+var texto2 = document.querySelector('.prueba2');
+var texto3 = document.querySelector('.prueba3');
+var button = document.querySelector(".btnadd");
+var searchbar = document.querySelector(".searchbar");
+var newFramework = { name: "", description: "", url: "" };
+var criterio = document.querySelector('.searchbar');
+//button.disabled=true;
+texto.onkeyup = function () {
+    texto.value === "" || texto2.value === "" || texto3.value === "" ? button.classList.add("disabled") : button.classList.remove("disabled");
+};
+texto2.onkeyup = function () {
+    texto.value === "" || texto2.value === "" || texto3.value === "" ? button.classList.add("disabled") : button.classList.remove("disabled");
+};
+texto3.onkeyup = function () {
+    texto.value === "" || texto2.value === "" || texto3.value === "" ? button.classList.add("disabled") : button.classList.remove("disabled");
+};
+searchbar.onblur = function () {
+    alert(elements);
+    elements.forEach(function (elemento) {
+        alert(elemento.nodeValue.valueOf());
+    });
+};
+var prueba = function () {
+    button.disabled = true;
+    newFramework.name = texto.value.toString();
+    newFramework.description = texto2.value.toString();
+    newFramework.url = texto3.value.toString();
+    var link = document.createElement('a');
+    link.className = 'list-group-item list-group-item-action searche';
+    link.href = 'javascript:void(0)';
+    link.textContent = texto.value.toString();
+    link.onclick = function () {
+        document.querySelector('.card-title').textContent = newFramework.name;
+        document.querySelector('.card-text').textContent = newFramework.description;
+        var frameworkSite = document.querySelector('.card .btn.btn-primary');
+        frameworkSite.target = '_blank';
+        frameworkSite.href = newFramework.url;
+        frameworkSite.textContent = "Go to " + newFramework.url + " site";
+    };
+    list.appendChild(link);
+    texto.value = "";
+    texto2.value = "";
+    texto3.value = "";
+};
 jsFrameworks.forEach(function (framework) {
     var link = document.createElement('a');
-    link.className = 'list-group-item list-group-item-action';
+    link.className = 'list-group-item list-group-item-action searche';
     link.href = 'javascript:void(0)';
     link.textContent = framework.name;
     link.onclick = function () {

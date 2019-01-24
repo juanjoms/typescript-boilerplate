@@ -40,10 +40,67 @@ let jsFrameworks: Framework[] = [
 ];
 
 const list: HTMLElement = document.getElementById('list-tab');
+const elements = document.querySelectorAll('.searche');
+const texto: HTMLInputElement = document.querySelector('.prueba');
+const texto2: HTMLInputElement = document.querySelector('.prueba2');
+const texto3: HTMLInputElement = document.querySelector('.prueba3');
+const button: HTMLButtonElement = document.querySelector(".btnadd");
+const searchbar: HTMLInputElement = document.querySelector(".searchbar");
+let newFramework:Framework = {name:"",description:"",url:"" };
+let criterio: HTMLInputElement = document.querySelector('.searchbar');
+
+//button.disabled=true;
+
+texto.onkeyup = () => {
+  texto.value ==="" || texto2.value === "" || texto3.value ==="" ? button.classList.add("disabled"): button.classList.remove("disabled");
+  
+}
+
+texto2.onkeyup = () => {
+  texto.value ==="" || texto2.value === "" || texto3.value ==="" ? button.classList.add("disabled"): button.classList.remove("disabled");
+}
+
+texto3.onkeyup = () => {
+  texto.value ==="" || texto2.value === "" || texto3.value ==="" ? button.classList.add("disabled"): button.classList.remove("disabled");
+}
+
+searchbar.onblur = () =>{
+  alert(elements)
+  elements.forEach( (elemento) =>{
+      alert(elemento.nodeValue.valueOf());
+  })
+}
+
+
+let prueba = () => {
+  button.disabled=true;
+  newFramework.name= texto.value.toString();
+newFramework.description = texto2.value.toString();
+newFramework.url = texto3.value.toString();
+  const link: HTMLAnchorElement = document.createElement('a');
+  link.className = 'list-group-item list-group-item-action searche';
+  link.href = 'javascript:void(0)';
+  link.textContent = texto.value.toString();
+  link.onclick = () => {
+    document.querySelector('.card-title').textContent = newFramework.name;
+    document.querySelector('.card-text').textContent = newFramework.description;
+    
+    const frameworkSite: HTMLAnchorElement = document.querySelector('.card .btn.btn-primary');
+    frameworkSite.target = '_blank';
+    frameworkSite.href = newFramework.url;
+    frameworkSite.textContent = `Go to ${newFramework.url} site`;
+    
+}
+list.appendChild(link);
+texto.value="";
+texto2.value="";
+texto3.value="";
+
+}
 
 jsFrameworks.forEach((framework) => {
   const link: HTMLAnchorElement = document.createElement('a');
-  link.className = 'list-group-item list-group-item-action';
+  link.className = 'list-group-item list-group-item-action searche';
   link.href = 'javascript:void(0)';
   link.textContent = framework.name;
   link.onclick = () => {
