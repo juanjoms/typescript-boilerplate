@@ -41,7 +41,7 @@ let jsFrameworks: Framework[] = [
 
 const list: HTMLElement = document.getElementById('list-tab');
 
-jsFrameworks.forEach((framework) => {
+let showNew = (framework: Framework) => {
   const link: HTMLAnchorElement = document.createElement('a');
   link.className = 'list-group-item list-group-item-action';
   link.href = 'javascript:void(0)';
@@ -55,28 +55,67 @@ jsFrameworks.forEach((framework) => {
     frameworkSite.textContent = `Go to ${framework.name} site`;
   }
   list.appendChild(link);
+}
+
+jsFrameworks.forEach((framework) => {
+  showNew(framework);
 });
 
-
-
+//-----------------------------------------------------------------------------------------------------------
 
 const myAdd = document.getElementById('addBtn') as HTMLButtonElement;
+const name1:HTMLInputElement = document.getElementById('inlineFormInputName2') as HTMLInputElement;
+  const description1:HTMLInputElement = document.getElementById('inlineFormInputDescription2') as HTMLInputElement;
+  const url1:HTMLInputElement = document.getElementById('inlineFormInputURL2') as HTMLInputElement;
 
 
+document.onkeypress = () => {
+  if(name1.value=="" || description1.value=="" || url1.value=="" ){
+    myAdd.disabled=true;
+  } else {
+    myAdd.disabled =false;
+  }
+}
+
+//myAdd.disabled=true; 
 myAdd.onclick = () => {
-  const name1:HTMLInputElement = document.getElementById('inlineFormInputName2') as HTMLInputElement;
-const description1:HTMLInputElement = document.getElementById('inlineFormInputDescription2') as HTMLInputElement;
-const url1:HTMLInputElement = document.getElementById('inlineFormInputURL2') as HTMLInputElement;
+  /*const name1:HTMLInputElement = document.getElementById('inlineFormInputName2') as HTMLInputElement;
+  const description1:HTMLInputElement = document.getElementById('inlineFormInputDescription2') as HTMLInputElement;
+  const url1:HTMLInputElement = document.getElementById('inlineFormInputURL2') as HTMLInputElement;*/
 
-  let newFramework: Framework = {
+  
+  //myAdd.addEventListener("keyup",function (){},false);
+
+  
+
+    let newFramework = {
+      name: name1.value,
+      description: description1.value,
+      url: url1.value
+    } 
+
+    jsFrameworks.push(newFramework);
+    showNew(newFramework);
+    console.log(newFramework); 
+    name1.value = "";
+    description1.value = "";
+    url1.value = "";
+    myAdd.disabled=true; 
+ 
+  
+  
+  /*let newFramework = {
     name: name1.value,
     description: description1.value,
     url: url1.value
-  }
-  console.log(newFramework); 
-  
-    //document.querySelector('inlineFormInputName2');
+  }*/
 
+  
 
 }
-//list.appendChild(link);
+
+let nombreK: HTMLInputElement= document.querySelector("#inlineFormInputName2");
+let desck: HTMLInputElement= document.querySelector("#inlineFormInputDescription2");
+let urlk: HTMLInputElement= document.querySelector("#inlineFormInputUrl2");
+
+//nombreK.addEventListener
