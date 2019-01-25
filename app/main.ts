@@ -4,7 +4,7 @@ class Greeter {
     this.greeting = message;
   }
   greet() {
-    return "Hello, asd " + this.greeting;
+    return "Hello, asd" + this.greeting;
   }
 }
 
@@ -20,24 +20,47 @@ let jsFrameworks: Framework[] = [
   {
     name: 'Angular',
     description: 'Officia excepteur do dolor id ullamco magna qui ullamco.',
-    url: 'https://angular.io'
+    url: 'https://angular.io/'
   },
   {
     name: 'Vue.js',
     description: 'Ex do exercitation voluptate nisi Lorem non officia reprehenderit incididunt irure eiusmod.',
-    url: 'angular.io'
+    url: 'https://vuejs.org/'
   },
   {
     name: 'React',
     description: 'Nostrud Lorem excepteur tempor Lorem non ad occaecat commodo ut duis commodo consectetur proident.',
-    url: 'angular.io'
+    url: 'https://reactjs.org/'
   },
   {
     name: 'Ember',
     description: 'Cupidatat et id aliqua laboris esse irure eu incididunt veniam ea labore aute adipisicing.',
-    url: 'angular.io'
+    url: 'https://www.emberjs.com/'
   }
 ];
+
+function save(){
+const newName: HTMLInputElement = document.getElementById('name') as HTMLInputElement;
+const newDescription: HTMLInputElement = document.getElementById('description') as HTMLInputElement;
+const newUrl: HTMLInputElement = document.getElementById('url') as HTMLInputElement;
+const newFramework = {
+  name: newName.value,
+  description: newDescription.value,
+  url: newUrl.value
+}
+jsFrameworks.push(newFramework);
+newName.appendChild(newName);
+newDescription.appendChild(newDescription);
+newUrl.appendChild(newUrl);
+console.log(newName.value);
+console.log(newDescription.value);
+console.log(newUrl.value);
+
+save.push()
+};
+
+
+
 
 const list: HTMLElement = document.getElementById('list-tab');
 

@@ -3,7 +3,7 @@ var Greeter = /** @class */ (function () {
         this.greeting = message;
     }
     Greeter.prototype.greet = function () {
-        return "Hello, asd " + this.greeting;
+        return "Hello, asd" + this.greeting;
     };
     return Greeter;
 }());
@@ -12,24 +12,42 @@ var jsFrameworks = [
     {
         name: 'Angular',
         description: 'Officia excepteur do dolor id ullamco magna qui ullamco.',
-        url: 'angular.io'
+        url: 'https://angular.io/'
     },
     {
         name: 'Vue.js',
         description: 'Ex do exercitation voluptate nisi Lorem non officia reprehenderit incididunt irure eiusmod.',
-        url: 'angular.io'
+        url: 'https://vuejs.org/'
     },
     {
         name: 'React',
         description: 'Nostrud Lorem excepteur tempor Lorem non ad occaecat commodo ut duis commodo consectetur proident.',
-        url: 'angular.io'
+        url: 'https://reactjs.org/'
     },
     {
         name: 'Ember',
         description: 'Cupidatat et id aliqua laboris esse irure eu incididunt veniam ea labore aute adipisicing.',
-        url: 'angular.io'
+        url: 'https://www.emberjs.com/'
     }
 ];
+function save() {
+    var newName = document.getElementById('name');
+    var newDescription = document.getElementById('description');
+    var newUrl = document.getElementById('url');
+    var newFramework = {
+        name: newName.value,
+        description: newDescription.value,
+        url: newUrl.value
+    };
+    jsFrameworks.push(newFramework);
+    newName.appendChild(newName);
+    newDescription.appendChild(newDescription);
+    newUrl.appendChild(newUrl);
+    console.log(newName.value);
+    console.log(newDescription.value);
+    console.log(newUrl.value);
+}
+;
 var list = document.getElementById('list-tab');
 jsFrameworks.forEach(function (framework) {
     var link = document.createElement('a');
