@@ -30,26 +30,27 @@ var jsFrameworks = [
         url: 'https://www.emberjs.com/'
     }
 ];
-function save() {
-    var newName = document.getElementById('name');
-    var newDescription = document.getElementById('description');
-    var newUrl = document.getElementById('url');
+var newName = document.getElementById('newName');
+var newDescription = document.getElementById('newDescription');
+var newUrl = document.getElementById('newUrl');
+var button = document.getElementById("button");
+document.onkeypress = function () {
+    if (newName.value == "" || newDescription.value == "" || newUrl.value == "") {
+        button.disabled = true;
+    }
+    else {
+        button.disabled = false;
+    }
+};
+var save = function () {
     var newFramework = {
         name: newName.value,
         description: newDescription.value,
         url: newUrl.value
     };
-    jsFrameworks.push(newFramework);
-    newName.appendChild(newName);
-    newDescription.appendChild(newDescription);
-    newUrl.appendChild(newUrl);
-    console.log(newName.value);
-    console.log(newDescription.value);
-    console.log(newUrl.value);
-}
-;
-var list = document.getElementById('list-tab');
-jsFrameworks.forEach(function (framework) {
+    agregar(newFramework);
+};
+var agregar = function (framework) {
     var link = document.createElement('a');
     link.className = 'list-group-item list-group-item-action';
     link.href = 'javascript:void(0)';
@@ -63,4 +64,13 @@ jsFrameworks.forEach(function (framework) {
         frameworkSite.textContent = "Go to " + framework.name + " site";
     };
     list.appendChild(link);
+    newName.value = '';
+    newDescription.value = '';
+    newUrl.value = '';
+    button.disabled = false;
+};
+var list = document.getElementById('list-tab');
+jsFrameworks.forEach(function (framework) {
+    agregar(framework);
+    button.disabled = true;
 });

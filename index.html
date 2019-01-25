@@ -1,15 +1,12 @@
 <!doctype html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
   <link rel="icon" href="favicon.ico">
-
   <title>Typescript Boilerplate</title>
-
   <!-- Icons for this template -->
   <link href="assets/fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
   <!-- Stylesheet -->
@@ -17,9 +14,7 @@
   <link href="assets/css/app.css" rel="stylesheet">
   <!-- endbuild -->
 </head>
-
 <body class="bg-light">
-
   <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse"
@@ -45,7 +40,6 @@
       </form>
     </div>
   </nav>
-
   <main role="main" class="main text-center">
     <div class="jumbotron">
       <div class="container">
@@ -61,32 +55,30 @@
         </p>
       </div>
     </div>
-
     <div id="app text-center">
       <div class="container mb-5">
           <form id="new-frameworkjs" class="row">
               <div class="form-group col-3">
-                <label for="name">Nombre</label>
-                <input type="text" class="form-control" id="name" value="name" placeholder="Nombre" required>
+                <label for="newName">Nombre</label>
+                <input type="text" class="form-control" id="newName" value="" placeholder="Nombre" required>
               </div>
               <div class="form-group col-3">
-                <label for="description">Descripción</label>
-                <input type="text" class="form-control" id="description" value="description" placeholder="descripción" required>
+                <label for="newDescription">Descripción</label>
+                <input type="text" class="form-control" id="newDescription" value="" placeholder="descripción" required>
               </div>
               <div class="form-group col-3">
-                <label for="url">URL</label>
-                <input type="text" class="form-control" id="url" placeholder="URL" value="url" required>
+                <label for="newUrl">URL</label>
+                <input type="text" class="form-control" id="newUrl" placeholder="URL" value="" required>
               </div>
               <div class="col-1">
               </div>
-                  <input type="button" value="form" id="coolbutton" onclick="save()" class="btn btn-primary disabled"></input>
+                  <input type="button" value="+" id="button" onclick="save()" class="form-group btn btn-primary"></input>
             </form>
         <div class="row">
           <div class="col-6">
             <div class="list-group" id="list-tab" role="tablist">
             </div>
           </div>
-
           <div class="col-6">
             <div class="card">
               <div class="card-body">
@@ -96,16 +88,12 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
     </div>
-
   </main>
-
   <!-- build:js -->
   <script src="app/main.js"></script>
   <!-- endbuild -->
 </body>
-
 </html>
