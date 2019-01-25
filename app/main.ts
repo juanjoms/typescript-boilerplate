@@ -59,3 +59,24 @@ jsFrameworks.forEach((framework) => {
 
 
 
+
+const myAdd = document.getElementById('addBtn') as HTMLButtonElement;
+
+
+myAdd.onclick = () => {
+  const name1:HTMLInputElement = document.getElementById('inlineFormInputName2') as HTMLInputElement;
+const description1:HTMLInputElement = document.getElementById('inlineFormInputDescription2') as HTMLInputElement;
+const url1:HTMLInputElement = document.getElementById('inlineFormInputURL2') as HTMLInputElement;
+
+  let newFramework: Framework = {
+    name: name1.value,
+    description: description1.value,
+    url: url1.value
+  }
+  console.log(newFramework); 
+  
+    //document.querySelector('inlineFormInputName2');
+
+
+}
+//list.appendChild(link);
