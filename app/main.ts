@@ -9,28 +9,6 @@ class Greeter {
 }
 
 let greeter = new Greeter("from Typescript");
-/*
-type infoBlock = {
-  title: string,
-  word: string,
-}
-
-let htmlinfoBlock: infoBlock[] = [
-  {
-    title: 'Name',
-    word: 'Name'
-  },
-  {
-    title: 'Description',
-    word: 'Description'
-  },
-  {
-    title: 'URL',
-    word: 'URL'
-  }];
-
-const infoBlock.forEach(block) => {
-}*/
 
 type Framework = {
   name: string,
@@ -85,25 +63,34 @@ jsFrameworks.forEach((framework) => {
 });
 
 
-const submit: HTMLButtonElement = document.getElementById("submit") as HTMLButtonElement;
+const newName: HTMLInputElement = document.getElementById("inputName") as HTMLInputElement;
+const newDescription: HTMLInputElement = document.getElementById("inputDescription") as HTMLInputElement;
+const newURL: HTMLInputElement = document.getElementById("inputURL") as HTMLInputElement;
+const submit: HTMLInputElement = document.getElementById("submit") as HTMLInputElement;
+
+
+document.onkeypress = () => {
+  if(newName.value == "" ||  newDescription.value == "" || newURL.value == "") {
+    submit.disabled=true;
+  } else {
+    submit.disabled = false;
+  }
+}
+
+
 submit.onclick = () =>{
-
-  const newName: HTMLInputElement = document.getElementById("inpuntName") as HTMLInputElement;
-  const newDescription: HTMLInputElement = document.getElementById("inpuntName") as HTMLInputElement;
-  const newURL: HTMLInputElement = document.getElementById("inpuntName") as HTMLInputElement;
-
   const newFrame = {
     name: newName.value,
     description: newDescription.value,
     url: newURL.value
     }
-    
+  
   jsFrameworks.push(newFrame);
-
   add(newFrame);
   newName.value = "";
   newDescription.value = "";
   newURL.value = "";
+  submit.disabled=true;
 }
 
 

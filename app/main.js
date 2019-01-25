@@ -49,11 +49,19 @@ var list = document.getElementById('list-tab');
 jsFrameworks.forEach(function (framework) {
     add(framework);
 });
+var newName = document.getElementById("inputName");
+var newDescription = document.getElementById("inputDescription");
+var newURL = document.getElementById("inputURL");
 var submit = document.getElementById("submit");
+document.onkeypress = function () {
+    if (newName.value == "" || newDescription.value == "" || newURL.value == "") {
+        submit.disabled = true;
+    }
+    else {
+        submit.disabled = false;
+    }
+};
 submit.onclick = function () {
-    var newName = document.getElementById("inpuntName");
-    var newDescription = document.getElementById("inpuntName");
-    var newURL = document.getElementById("inpuntName");
     var newFrame = {
         name: newName.value,
         description: newDescription.value,
@@ -64,4 +72,5 @@ submit.onclick = function () {
     newName.value = "";
     newDescription.value = "";
     newURL.value = "";
+    submit.disabled = true;
 };
