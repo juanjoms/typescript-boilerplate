@@ -31,7 +31,7 @@ var jsFrameworks = [
     }
 ];
 var list = document.getElementById('list-tab');
-var elements = document.querySelectorAll('.searche');
+var elements = Array.from(document.querySelectorAll('.searche'));
 var texto = document.querySelector('.prueba');
 var texto2 = document.querySelector('.prueba2');
 var texto3 = document.querySelector('.prueba3');
@@ -50,9 +50,9 @@ texto3.onkeyup = function () {
     texto.value === "" || texto2.value === "" || texto3.value === "" ? button.classList.add("disabled") : button.classList.remove("disabled");
 };
 searchbar.onblur = function () {
-    alert(elements);
-    elements.forEach(function (elemento) {
-        alert(elemento.nodeValue.valueOf());
+    console.log(elements);
+    elements.forEach(function (element) {
+        alert("we");
     });
 };
 var prueba = function () {

@@ -40,7 +40,7 @@ let jsFrameworks: Framework[] = [
 ];
 
 const list: HTMLElement = document.getElementById('list-tab');
-const elements = document.querySelectorAll('.searche');
+const elements = Array.from(document.querySelectorAll('.searche')) as HTMLInputElement[];
 const texto: HTMLInputElement = document.querySelector('.prueba');
 const texto2: HTMLInputElement = document.querySelector('.prueba2');
 const texto3: HTMLInputElement = document.querySelector('.prueba3');
@@ -65,10 +65,10 @@ texto3.onkeyup = () => {
 }
 
 searchbar.onblur = () =>{
-  alert(elements)
-  elements.forEach( (elemento) =>{
-      alert(elemento.nodeValue.valueOf());
-  })
+  console.log(elements)
+elements.forEach((element) =>{
+  alert("we");
+})
 }
 
 
