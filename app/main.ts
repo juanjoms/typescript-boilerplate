@@ -39,7 +39,7 @@ let jsFrameworks: Framework[] = [ //tomar este array
   }
 ];
 
-const agregar = (framework:Framework) =>{
+const agregar = (framework:Framework) =>{//funcion agregar
   const link: HTMLAnchorElement = document.createElement('a');
   link.className = 'list-group-item list-group-item-action';
   link.href = 'javascript:void(0)';
@@ -69,29 +69,41 @@ const frameworkSite: HTMLAnchorElement = document.querySelector('.formTecnologia
 
 } */
 
+//inputs
 const  add:HTMLInputElement = document.getElementById('btnAdd') as HTMLInputElement;
-add.onclick = () => {
+const inputTecnologia: HTMLInputElement = document.getElementById('inlineFormInputTecnologia') as HTMLInputElement;
+const inputDescripcion: HTMLInputElement = document.getElementById('inlineFormInputDescripcion') as HTMLInputElement;
+const inputUrl: HTMLInputElement = document.getElementById('inlineFormInputurl') as HTMLInputElement;
 
-  const inputTecnologia: HTMLInputElement = document.getElementById('inlineFormInputTecnologia') as HTMLInputElement;
-  const inputDescripcion: HTMLInputElement = document.getElementById('inlineFormInputDescripcion') as HTMLInputElement;
-  //inputDescripcion.value;
-  const inputUrl: HTMLInputElement = document.getElementById('inlineFormInputurl') as HTMLInputElement;
+document.onkeypress = () =>{
+  if(inputTecnologia.value =="" || inputDescripcion.value == "" || inputUrl.value == "" ){
+    add.disabled = true;
+  } else {
+    add.disabled = false;
+  }
+}
 
-if (inputTecnologia.value.length > 0 && inputDescripcion.value.length > 0 && inputUrl.value.length  > 0){
 
-  const send = {
+
+add.onclick = () => { //boton agregar
+
+    const send = {
     name: inputTecnologia.value,
     description:inputDescripcion.value ,
     url: inputUrl.value
-  }
 
- 
+    
+  }
+   
  jsFrameworks.push(send);
  agregar(send);
   inputTecnologia.value = "";
   inputDescripcion.value  = "";
   inputUrl.value = "";
+
+
 }
+
 
 }
 

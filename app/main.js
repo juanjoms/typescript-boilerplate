@@ -55,22 +55,28 @@ document.querySelector('formTecnologia').textContent = framework.name;
 const frameworkSite: HTMLAnchorElement = document.querySelector('.formTecnologia.card .btn btn-agregar');
 
 } */
+//inputs
 var add = document.getElementById('btnAdd');
-add.onclick = function () {
-    var inputTecnologia = document.getElementById('inlineFormInputTecnologia');
-    var inputDescripcion = document.getElementById('inlineFormInputDescripcion');
-    //inputDescripcion.value;
-    var inputUrl = document.getElementById('inlineFormInputurl');
-    if (inputTecnologia.value.length > 0 && inputDescripcion.value.length > 0 && inputUrl.value.length > 0) {
-        var send = {
-            name: inputTecnologia.value,
-            description: inputDescripcion.value,
-            url: inputUrl.value
-        };
-        jsFrameworks.push(send);
-        agregar(send);
-        inputTecnologia.value = "";
-        inputDescripcion.value = "";
-        inputUrl.value = "";
+var inputTecnologia = document.getElementById('inlineFormInputTecnologia');
+var inputDescripcion = document.getElementById('inlineFormInputDescripcion');
+var inputUrl = document.getElementById('inlineFormInputurl');
+document.onkeypress = function () {
+    if (inputTecnologia.value == "" || inputDescripcion.value == "" || inputUrl.value == "") {
+        add.disabled = true;
     }
+    else {
+        add.disabled = false;
+    }
+};
+add.onclick = function () {
+    var send = {
+        name: inputTecnologia.value,
+        description: inputDescripcion.value,
+        url: inputUrl.value
+    };
+    jsFrameworks.push(send);
+    agregar(send);
+    inputTecnologia.value = "";
+    inputDescripcion.value = "";
+    inputUrl.value = "";
 };
