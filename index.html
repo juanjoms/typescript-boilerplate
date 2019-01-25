@@ -63,8 +63,45 @@
     </div>
 
     <div id="app text-center">
+      <!-- section de los titulos -->
+      
+
+
+
+      <!-- seccion para agregar nuevo framework-->
+      <form>
+          <div class="form-row align-items-center">
+              <!-- 1 space -->
+              <div class="col-1"></div>
+
+              <!-- NAME -->
+              <div class="col-3">
+                  <label class="sr-only" for="inlineFormInput">Name</label>
+                  <input type="text" class="form-control mb-2" id="inputName" placeholder="New FrameWork">
+                </div>
+              <!-- DESCRIPTION -->
+            <div class="col-3">
+              <label class="sr-only" for="inlineFormInput">Description</label>
+              <input type="text" class="form-control mb-2" id="inputDescription" placeholder="Description">
+            </div>
+
+             <!-- URL -->
+             <div class="col-3">
+                <label class="sr-only" for="inlineFormInput">URL</label>
+                <input type="text" class="form-control mb-2" id="inputURL" placeholder="URL">
+              </div>
+              <!-- SUBMIT -->
+            <div class="col-auto">
+              <button type="submit" id="submit" class="btn btn-primary mb-2">Submit</button>
+            </div>
+          </div>
+        </form>
+
+
+      <!-- seccion de frameworks hecha-->
       <div class="container">
         <div class="row">
+
           <div class="col-6">
             <div class="list-group" id="list-tab" role="tablist">
             </div>

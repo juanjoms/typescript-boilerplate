@@ -12,7 +12,7 @@ var jsFrameworks = [
     {
         name: 'Angular',
         description: 'Officia excepteur do dolor id ullamco magna qui ullamco.',
-        url: 'angular.io'
+        url: 'https://angular.io'
     },
     {
         name: 'Vue.js',
@@ -30,8 +30,7 @@ var jsFrameworks = [
         url: 'angular.io'
     }
 ];
-var list = document.getElementById('list-tab');
-jsFrameworks.forEach(function (framework) {
+var add = (function (framework) {
     var link = document.createElement('a');
     link.className = 'list-group-item list-group-item-action';
     link.href = 'javascript:void(0)';
@@ -46,3 +45,23 @@ jsFrameworks.forEach(function (framework) {
     };
     list.appendChild(link);
 });
+var list = document.getElementById('list-tab');
+jsFrameworks.forEach(function (framework) {
+    add(framework);
+});
+var submit = document.getElementById("submit");
+submit.onclick = function () {
+    var newName = document.getElementById("inpuntName");
+    var newDescription = document.getElementById("inpuntName");
+    var newURL = document.getElementById("inpuntName");
+    var newFrame = {
+        name: newName.value,
+        description: newDescription.value,
+        url: newURL.value
+    };
+    jsFrameworks.push(newFrame);
+    add(newFrame);
+    newName.value = "";
+    newDescription.value = "";
+    newURL.value = "";
+};
