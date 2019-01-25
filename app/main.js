@@ -37,47 +37,32 @@ var texto2 = document.querySelector('.prueba2');
 var texto3 = document.querySelector('.prueba3');
 var button = document.querySelector(".btnadd");
 var searchbar = document.querySelector(".searchbar");
-var newFramework = { name: "", description: "", url: "" };
 var criterio = document.querySelector('.searchbar');
 //button.disabled=true;
-texto.onkeyup = function () {
-    texto.value === "" || texto2.value === "" || texto3.value === "" ? button.classList.add("disabled") : button.classList.remove("disabled");
+document.onkeypress = function () {
+    texto.value === "" || texto2.value === "" || texto3.value === "" ? button.disabled = true : button.disabled = false;
 };
-texto2.onkeyup = function () {
-    texto.value === "" || texto2.value === "" || texto3.value === "" ? button.classList.add("disabled") : button.classList.remove("disabled");
-};
-texto3.onkeyup = function () {
-    texto.value === "" || texto2.value === "" || texto3.value === "" ? button.classList.add("disabled") : button.classList.remove("disabled");
-};
+/* texto2.onkeyup = () => {
+  texto.value ==="" || texto2.value === "" || texto3.value ==="" ? button.classList.add("disabled"): button.classList.remove("disabled");
+}
+
+texto3.onkeyup = () => {
+  texto.value ==="" || texto2.value === "" || texto3.value ==="" ? button.classList.add("disabled"): button.classList.remove("disabled");
+} */
 searchbar.onblur = function () {
     console.log(elements);
     elements.forEach(function (element) {
-        alert("we");
+        element.text;
     });
 };
 var prueba = function () {
-    button.disabled = true;
-    newFramework.name = texto.value.toString();
-    newFramework.description = texto2.value.toString();
-    newFramework.url = texto3.value.toString();
-    var link = document.createElement('a');
-    link.className = 'list-group-item list-group-item-action searche';
-    link.href = 'javascript:void(0)';
-    link.textContent = texto.value.toString();
-    link.onclick = function () {
-        document.querySelector('.card-title').textContent = newFramework.name;
-        document.querySelector('.card-text').textContent = newFramework.description;
-        var frameworkSite = document.querySelector('.card .btn.btn-primary');
-        frameworkSite.target = '_blank';
-        frameworkSite.href = newFramework.url;
-        frameworkSite.textContent = "Go to " + newFramework.url + " site";
-    };
-    list.appendChild(link);
-    texto.value = "";
-    texto2.value = "";
-    texto3.value = "";
+    var x = 2;
+    var newFramework = { name: texto.value, description: texto2.value, url: texto3.value };
+    agregar(newFramework);
+    x === 2 ? true : false;
+    console.log(x);
 };
-jsFrameworks.forEach(function (framework) {
+var agregar = function (framework) {
     var link = document.createElement('a');
     link.className = 'list-group-item list-group-item-action searche';
     link.href = 'javascript:void(0)';
@@ -88,7 +73,16 @@ jsFrameworks.forEach(function (framework) {
         var frameworkSite = document.querySelector('.card .btn.btn-primary');
         frameworkSite.target = '_blank';
         frameworkSite.href = framework.url;
-        frameworkSite.textContent = "Go to " + framework.name + " site";
+        frameworkSite.textContent = "Go to " + framework.url + " site";
     };
     list.appendChild(link);
+    button.classList.add("disabled");
+    texto.value = "";
+    texto2.value = "";
+    texto3.value = "";
+    button.disabled = true;
+};
+jsFrameworks.forEach(function (framework) {
+    agregar(framework);
+    //elements.push(link);
 });

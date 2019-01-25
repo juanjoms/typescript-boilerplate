@@ -40,65 +40,48 @@ let jsFrameworks: Framework[] = [
 ];
 
 const list: HTMLElement = document.getElementById('list-tab');
-const elements = Array.from(document.querySelectorAll('.searche')) as HTMLInputElement[];
+const elements = Array.from(document.querySelectorAll('.searche')) as HTMLAnchorElement[];
 const texto: HTMLInputElement = document.querySelector('.prueba');
 const texto2: HTMLInputElement = document.querySelector('.prueba2');
 const texto3: HTMLInputElement = document.querySelector('.prueba3');
 const button: HTMLButtonElement = document.querySelector(".btnadd");
 const searchbar: HTMLInputElement = document.querySelector(".searchbar");
-let newFramework:Framework = {name:"",description:"",url:"" };
+
 let criterio: HTMLInputElement = document.querySelector('.searchbar');
 
 //button.disabled=true;
 
-texto.onkeyup = () => {
-  texto.value ==="" || texto2.value === "" || texto3.value ==="" ? button.classList.add("disabled"): button.classList.remove("disabled");
-  
+document.onkeypress = () =>{
+  texto.value ==="" || texto2.value === "" || texto3.value ==="" ? button.disabled=true: button.disabled=false;
 }
 
-texto2.onkeyup = () => {
+
+
+/* texto2.onkeyup = () => {
   texto.value ==="" || texto2.value === "" || texto3.value ==="" ? button.classList.add("disabled"): button.classList.remove("disabled");
 }
 
 texto3.onkeyup = () => {
   texto.value ==="" || texto2.value === "" || texto3.value ==="" ? button.classList.add("disabled"): button.classList.remove("disabled");
-}
+} */
 
-searchbar.onblur = () =>{
-  console.log(elements)
+ searchbar.onblur = () =>{
+ console.log(elements)
 elements.forEach((element) =>{
-  alert("we");
+  element.text
 })
 }
 
 
 let prueba = () => {
-  button.disabled=true;
-  newFramework.name= texto.value.toString();
-newFramework.description = texto2.value.toString();
-newFramework.url = texto3.value.toString();
-  const link: HTMLAnchorElement = document.createElement('a');
-  link.className = 'list-group-item list-group-item-action searche';
-  link.href = 'javascript:void(0)';
-  link.textContent = texto.value.toString();
-  link.onclick = () => {
-    document.querySelector('.card-title').textContent = newFramework.name;
-    document.querySelector('.card-text').textContent = newFramework.description;
-    
-    const frameworkSite: HTMLAnchorElement = document.querySelector('.card .btn.btn-primary');
-    frameworkSite.target = '_blank';
-    frameworkSite.href = newFramework.url;
-    frameworkSite.textContent = `Go to ${newFramework.url} site`;
-    
-}
-list.appendChild(link);
-texto.value="";
-texto2.value="";
-texto3.value="";
-
+  let x:number =2;
+  let newFramework:Framework = {name:texto.value,description:texto2.value,url:texto3.value};
+  agregar(newFramework)
+  x===2 ? true:false;
+  console.log(x);
 }
 
-jsFrameworks.forEach((framework) => {
+let agregar = (framework) => {
   const link: HTMLAnchorElement = document.createElement('a');
   link.className = 'list-group-item list-group-item-action searche';
   link.href = 'javascript:void(0)';
@@ -109,9 +92,19 @@ jsFrameworks.forEach((framework) => {
     const frameworkSite: HTMLAnchorElement = document.querySelector('.card .btn.btn-primary');
     frameworkSite.target = '_blank';
     frameworkSite.href = framework.url;
-    frameworkSite.textContent = `Go to ${framework.name} site`;
+    frameworkSite.textContent = `Go to ${framework.url} site`;
   }
   list.appendChild(link);
+  button.classList.add("disabled");
+  texto.value="";
+  texto2.value="";
+  texto3.value="";
+  button.disabled=true;
+}
+
+jsFrameworks.forEach((framework) => {
+  agregar(framework)
+  //elements.push(link);
 });
 
 
