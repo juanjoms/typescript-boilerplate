@@ -4,44 +4,58 @@ class Greeter {
     this.greeting = message;
   }
   greet() {
-    return "Hello, asd " + this.greeting;
+    return "Hello, asd" + this.greeting;
   }
 }
-
 let greeter = new Greeter("from Typescript");
-
 type Framework = {
   name: string,
   description: string,
   url: string
 }
-
 let jsFrameworks: Framework[] = [
   {
     name: 'Angular',
     description: 'Officia excepteur do dolor id ullamco magna qui ullamco.',
-    url: 'https://angular.io'
+    url: 'https://angular.io/'
   },
   {
     name: 'Vue.js',
     description: 'Ex do exercitation voluptate nisi Lorem non officia reprehenderit incididunt irure eiusmod.',
-    url: 'angular.io'
+    url: 'https://vuejs.org/'
   },
   {
     name: 'React',
     description: 'Nostrud Lorem excepteur tempor Lorem non ad occaecat commodo ut duis commodo consectetur proident.',
-    url: 'angular.io'
+    url: 'https://reactjs.org/'
   },
   {
     name: 'Ember',
     description: 'Cupidatat et id aliqua laboris esse irure eu incididunt veniam ea labore aute adipisicing.',
-    url: 'angular.io'
+    url: 'https://www.emberjs.com/'
   }
 ];
+const newName: HTMLInputElement = document.getElementById('newName') as HTMLInputElement;
+const newDescription: HTMLInputElement = document.getElementById('newDescription') as HTMLInputElement;
+const newUrl: HTMLInputElement = document.getElementById('newUrl') as HTMLInputElement;
+const button: HTMLInputElement = document.getElementById("button") as HTMLInputElement;
 
-const list: HTMLElement = document.getElementById('list-tab');
-
-jsFrameworks.forEach((framework) => {
+document.onkeypress = () => {
+  if(newName.value == "" ||  newDescription.value == "" || newUrl.value == "") {
+    button.disabled=true;
+  } else {
+    button.disabled = false;
+  }
+}
+let save = () => {
+  let newFramework: Framework = {
+    name: newName.value, 
+    description: newDescription.value, 
+    url: newUrl.value
+  };
+  agregar(newFramework);
+}
+let agregar = (framework) => {
   const link: HTMLAnchorElement = document.createElement('a');
   link.className = 'list-group-item list-group-item-action';
   link.href = 'javascript:void(0)';
@@ -55,7 +69,13 @@ jsFrameworks.forEach((framework) => {
     frameworkSite.textContent = `Go to ${framework.name} site`;
   }
   list.appendChild(link);
+  newName.value = '';
+  newDescription.value = '';
+  newUrl.value = '';
+  button.disabled = false;
+}
+const list: HTMLElement = document.getElementById('list-tab');
+jsFrameworks.forEach((framework) => {
+  agregar(framework);
+  button.disabled = true;
 });
-
-
-
