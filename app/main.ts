@@ -35,9 +35,9 @@ let jsFrameworks: Framework[] = [
     url: 'https://www.emberjs.com/'
   }
 ];
-const newName: HTMLInputElement = document.getElementById('newName') as HTMLInputElement;
-const newDescription: HTMLInputElement = document.getElementById('newDescription') as HTMLInputElement;
-const newUrl: HTMLInputElement = document.getElementById('newUrl') as HTMLInputElement;
+const newName: HTMLInputElement = document.getElementById('new-name') as HTMLInputElement;
+const newDescription: HTMLInputElement = document.getElementById('new-description') as HTMLInputElement;
+const newUrl: HTMLInputElement = document.getElementById('new-url') as HTMLInputElement;
 const button: HTMLInputElement = document.getElementById("button") as HTMLInputElement;
 
 document.onkeypress = () => {
@@ -47,7 +47,7 @@ document.onkeypress = () => {
     button.disabled = false;
   }
 }
-let save = () => {
+const save = () => {
   let newFramework: Framework = {
     name: newName.value, 
     description: newDescription.value, 
@@ -55,7 +55,16 @@ let save = () => {
   };
   agregar(newFramework);
 }
-let agregar = (framework) => {
+const list: HTMLElement = document.getElementById('list-tab');
+jsFrameworks.forEach((framework) => {
+  agregar(framework);
+  button.disabled = true;
+});
+let agregar = (framework: { 
+  name: string,
+  description: string,
+  url: string; 
+}) => {
   const link: HTMLAnchorElement = document.createElement('a');
   link.className = 'list-group-item list-group-item-action';
   link.href = 'javascript:void(0)';
@@ -74,8 +83,3 @@ let agregar = (framework) => {
   newUrl.value = '';
   button.disabled = false;
 }
-const list: HTMLElement = document.getElementById('list-tab');
-jsFrameworks.forEach((framework) => {
-  agregar(framework);
-  button.disabled = true;
-});
