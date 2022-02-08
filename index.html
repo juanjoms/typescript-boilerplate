@@ -49,7 +49,7 @@
   <main role="main" class="main text-center">
     <div class="jumbotron">
       <div class="container">
-        <h1 class="jumbotron-heading">Typescript Boilerplate</h1>
+        <h1 class="jumbotron-heading">Osler: Typescript Boilerplate</h1>
         <p class="lead text-muted">This example is a prebuilt Typescript starter kit</p>
         <p class="lead text-muted"><b>To get started</b>: After running the command <code>gulp dev</code>, edit a <code>.html</code>,
           <code>.scss</code>, or a <code>.ts</code> file, the browser will reload automatically.</p>
@@ -63,26 +63,67 @@
     </div>
 
     <div id="app text-center">
-      <div class="container">
-        <div class="row">
-          <div class="col-6">
-            <div class="list-group" id="list-tab" role="tablist">
+        <div class="form-row align-items-center">
+      <!-- section de los titulos -->
+
+
+      <!-- seccion para agregar nuevo framework-->
+              <!-- 1 col -->
+              <div class="col-1"></div>
+
+              <!-- NAME -->
+              <div class="col-3">
+                  <label class="sr-only" for="inlineFormInput">Name</label>
+                  <input type="text" class="formName form-control" id="inputName" placeholder="New FrameWork">
+                </div>
+              <!-- DESCRIPTION -->
+            <div class="col-3">
+              <label class="sr-only" for="inlineFormInput">Description</label>
+              <input type="text" class="formDescription form-control" id="inputDescription" placeholder="Description">
+            </div>
+
+             <!-- URL -->
+             <div class="col-3">
+                <label class="sr-only" for="inlineFormInput">URL</label>
+                <input type="text" class="formInputURL form-control" id="inputURL" placeholder="URL">
+              </div>
+              <!-- SUBMIT -->
+            <div class="col-auto">
+              <input type="button" id="submit" class="btn btn-primary" value ="+" disabled>
             </div>
           </div>
+      </div>
 
-          <div class="col-6">
-            <div class="card">
-              <div class="card-body">
-                <h5 class="card-title">Special title treatment</h5>
-                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
+      <div class="col-12">
+          < type="text">
+        </div>
+
+
+      <div id="app text-center">
+          <div class="form-row align-items-center">
+            <!-- seccion de frameworks hecha-->
+            <div class="container">
+              <div class="row">
+
+                <div class="col-6">
+                  <div class="list-group" id="list-tab" role="tablist">
+                  </div>
+                </div>
+
+                <div class="col-6">
+                  <div class="card">
+                    <div class="card-body">
+                      <h5 class="card-title">Special title treatment</h5>
+                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+                </div>
+
+                </div>
               </div>
             </div>
-          </div>
-
         </div>
-      </div>
-    </div>
 
   </main>
 
